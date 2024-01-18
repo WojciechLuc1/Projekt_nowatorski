@@ -1,0 +1,186 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: url('theme.jpg') no-repeat center fixed;
+    background-size: cover;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+
+#login {
+    text-align: center;
+}
+
+#login label {
+    display: inline-block;
+    width: 120px; /* dostosuj szerokość etykiety do Twoich potrzeb */
+    text-align: right;
+    margin-right: 10px;
+}
+
+#login input {
+    width: 200px; /* dostosuj szerokość pola wejściowego do Twoich potrzeb */
+    margin-bottom: 10px;
+}
+
+#login button {
+    width: 150px; /* dostosuj szerokość przycisku do Twoich potrzeb */
+}
+
+#registration {
+    text-align: center;
+}
+
+#registration h2 {
+    margin-bottom: 16px;
+}
+
+#registration label {
+    display: block;
+    margin: 8px 0;
+}
+
+#registration input {
+    width: calc(100% - 16px);
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+}
+
+#registration button {
+    padding: 10px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.room-container {
+    text-align: center; /* Centrowanie zawartości kontenera z pokojem */
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin: 10px 0; /* Zwiększ odstęp górny i dolny między pokojami */
+    width: 200px;
+    transition: background-color 0.3s ease-in-out;
+    display: inline-block;
+}
+
+.room-container:hover {
+    background-color: #f9f9f9;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+}
+
+.content-box {
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin: 20px;
+    text-align: center;
+}
+
+#roomList {
+    text-align: center;
+}
+
+#roomList h2 {
+    text-align: left;
+}
+
+#roomList button {
+    float: right;
+    margin-top: 10px;
+}
+
+.footer {
+    text-align: right; /* Ustawienie tekstu w stopce strony na prawo */
+}
+
+#rooms {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.room-tile {
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin: 30px;
+    width: 200px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.room-tile:hover {
+    background-color: #f9f9f9;
+}
+
+
+#roomOptions {
+    text-align: center;
+}
+
+#roomOptions label {
+    display: block;
+    width: 100%; /* Dostosuj szerokość etykiety do całej szerokości dostępnej dla niej */
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+#roomOptions input,
+#roomOptions textarea,
+#roomOptions select {
+    width: 100%; /* Dostosuj szerokość pól wejściowych do całej szerokości dostępnej dla nich */
+    margin-bottom: 10px;
+}
+
+#roomList button {
+    float: right; /* Dodaj float: right, aby przycisk przeniósł się w prawy górny róg */
+    margin-top: 10px;
+}
+
+#history {
+    text-align: left;
+}
+
+.footer {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+#userList {
+    list-style: none;
+    padding: 0;
+}
+
+#userList li {
+    margin-bottom: 20px; /* Dodaj odstęp między poszczególnymi elementami listy */
+}
+
+#userListButton {
+    margin-top: 20px; /* Dodaj odstęp nad przyciskiem "Pokaż użytkowników" */
+}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OneRoom</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="app.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <h1>OneRoom</h1>
+    </header>
+
+    <main id="main-content">
+        <div id="login" class="content-box">
+            <h2>Logowanie</h2>
+            <label for="username">Użytkownik:</label>
+            <input type="text" id="username" name="username">
+            <br>
+            <label for="password">Hasło:</label>
+            <input type="password" id="password" name="password">
+            <br>
+            <button onclick="login()">Zaloguj</button>
+            <button onclick="showRegistration()">Zarejestruj się</button>
+        </div>
+
+        <div id="registration" class="content-box" style="display: none;">
+            <!-- Formularz rejestracji -->
+            <label for="newUsername">Nowa nazwa użytkownika:</label>
+            <input type="text" id="newUsername" name="newUsername">
+            <br>
+            <label for="newPassword">Nowe hasło:</label>
+            <input type="password" id="newPassword" name="newPassword">
+            <br>
+            <button onclick="register()">Zarejestruj</button>
+            <button onclick="showLogin()">Wróć do logowania</button>
+        </div>
+
+        <div id="welcomeMessage" class="content-box" style="display: none;">
+            <h2>Witamy!</h2>
+            <button onclick="logout()">Wyloguj</button>
+        </div>
+
+        <div id="roomList" class="content-box" style="display: none;">
+            <h2>Lista pokoi</h2>
+            <div id="rooms"></div>
+            <button onclick="logout()">Wyloguj</button>
+            <button id="userListButton" onclick="showUserList()">Pokaż użytkowników</button>
+        </div>
+
+        <div id="roomOptions" class="content-box" style="display: none;">
+            <h2>Opcje pokoju</h2>
+            <select id="statusOptions">
+                <option value="clean">Czysty</option>
+                <option value="dirty">Do posprzątania</option>
+                <option value="refresh">Do odświeżenia</option>
+            </select>
+            <label for="dueDate">Wykonać do:</label>
+            <input type="datetime-local" id="dueDate">
+            <label for="note">Notatka:</label>
+            <textarea id="note"></textarea>
+            <button onclick="changeStatus()">Zmień status</button>
+            <button onclick="goBackToList()">Powrót</button>
+            <button onclick="removeLastEntry()">Usuń ostatni wpis</button>
+            <button onclick="clearRoomHistory()">Wyczyść historię</button>
+
+            <h2>Historia zmian</h2>
+            <ul id="history"></ul>
+            <button onclick="logout()">Wyloguj</button>
+        </div>
+
+        <div id="userList" class="content-box" style="display: none;">
+            <h2>Lista użytkowników</h2>
+            <ul id="users"></ul>
+            <button onclick="goBackToUserList()">Wróć do listy pokoi</button>
+        </div>
+    </main>
+
+    <footer class="footer">
+        &copy; 2024 OneRoom
+    </footer>
+</body>
+
+</html>
