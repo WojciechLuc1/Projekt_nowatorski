@@ -14,18 +14,18 @@ body {
 
 #login label {
     display: inline-block;
-    width: 120px; /* dostosuj szerokość etykiety do Twoich potrzeb */
+    width: 120px;
     text-align: right;
     margin-right: 10px;
 }
 
 #login input {
-    width: 200px; /* dostosuj szerokość pola wejściowego do Twoich potrzeb */
+    width: 200px;
     margin-bottom: 10px;
 }
 
 #login button {
-    width: 150px; /* dostosuj szerokość przycisku do Twoich potrzeb */
+    width: 150px;
 }
 
 #registration {
@@ -60,11 +60,11 @@ body {
 }
 
 .room-container {
-    text-align: center; /* Centrowanie zawartości kontenera z pokojem */
+    text-align: center;
     background-color: white;
     border: 1px solid #ddd;
     padding: 20px;
-    margin: 10px 0; /* Zwiększ odstęp górny i dolny między pokojami */
+    margin: 10px 0;
     width: 200px;
     transition: background-color 0.3s ease-in-out;
     display: inline-block;
@@ -110,7 +110,7 @@ main {
 }
 
 .footer {
-    text-align: right; /* Ustawienie tekstu w stopce strony na prawo */
+    text-align: right;
 }
 
 #rooms {
@@ -141,7 +141,7 @@ main {
 
 #roomOptions label {
     display: block;
-    width: 100%; /* Dostosuj szerokość etykiety do całej szerokości dostępnej dla niej */
+    width: 100%;
     text-align: left;
     margin-bottom: 5px;
 }
@@ -149,12 +149,12 @@ main {
 #roomOptions input,
 #roomOptions textarea,
 #roomOptions select {
-    width: 100%; /* Dostosuj szerokość pól wejściowych do całej szerokości dostępnej dla nich */
+    width: 100%;
     margin-bottom: 10px;
 }
 
 #roomList button {
-    float: right; /* Dodaj float: right, aby przycisk przeniósł się w prawy górny róg */
+    float: right;
     margin-top: 10px;
 }
 
@@ -178,9 +178,9 @@ main {
 }
 
 #userList li {
-    margin-bottom: 20px; /* Dodaj odstęp między poszczególnymi elementami listy */
+    margin-bottom: 20px;
 }
 
 #userListButton {
-    margin-top: 20px; /* Dodaj odstęp nad przyciskiem "Pokaż użytkowników" */
+    margin-top: 20px;
 }
