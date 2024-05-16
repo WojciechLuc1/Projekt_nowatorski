@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../../services/auth_service.dart';
-import '../home_screen.dart';
 import '../employee_screen.dart';
 import '../customer_screen.dart';
 import 'register_screen.dart';
@@ -42,12 +41,12 @@ class LoginScreen extends StatelessWidget {
                   if (role == 'employee') {
                     Navigator.pushReplacement(
                       context,
-                      MaterialPageRoute(builder: (context) => EmployeeScreen()), // Przekierowanie na ekran pracownika
+                      MaterialPageRoute(builder: (context) => EmployeeScreen()),
                     );
                   } else if (role == 'customer') {
                     Navigator.pushReplacement(
                       context,
-                      MaterialPageRoute(builder: (context) => CustomerScreen()), // Przekierowanie na ekran klienta
+                      MaterialPageRoute(builder: (context) => CustomerScreen()),
                     );
                   } else {
                     ScaffoldMessenger.of(context).showSnackBar(
@@ -66,7 +65,7 @@ class LoginScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => RegisterScreen()), // Przejście do ekranu rejestracji
+                  MaterialPageRoute(builder: (context) => RegisterScreen()),
                 );
               },
               child: Text('Register'),
