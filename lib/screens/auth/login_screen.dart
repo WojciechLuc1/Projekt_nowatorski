@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../../services/auth_service.dart';
 import '../employee_screen.dart';
-import '../customer_screen.dart';
+import '../customer_welcome_screen.dart'; // Importuj ekran powitalny klienta
 import 'register_screen.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -46,7 +46,7 @@ class LoginScreen extends StatelessWidget {
                   } else if (role == 'customer') {
                     Navigator.pushReplacement(
                       context,
-                      MaterialPageRoute(builder: (context) => CustomerScreen()),
+                      MaterialPageRoute(builder: (context) => CustomerWelcomeScreen()), // Przekierowanie na ekran powitalny klienta
                     );
                   } else {
                     ScaffoldMessenger.of(context).showSnackBar(

@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         title: 'Wypożyczalnia Sprzętu Elektronicznego',
-        home: LoginScreen(), // Zawsze startuj od ekranu logowania
+        home: LoginScreen(),
       ),
     );
   }

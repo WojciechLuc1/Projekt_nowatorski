@@ -10,7 +10,8 @@ class RegisterScreen extends StatefulWidget {
 class _RegisterScreenState extends State<RegisterScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  String? _role;
+  final TextEditingController _confirmPasswordController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -20,46 +21,61 @@ class _RegisterScreenState extends State<RegisterScreen> {
       appBar: AppBar(title: Text('Register')),
       body: Padding(
         padding: EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            TextField(
-              controller: _emailController,
-              decoration: InputDecoration(labelText: 'Email'),
-            ),
-            TextField(
-              controller: _passwordController,
-              decoration: InputDecoration(labelText: 'Password'),
-              obscureText: true,
-            ),
-            DropdownButtonFormField<String>(
-              value: _role,
-              onChanged: (value) {
-                setState(() {
-                  _role = value;
-                });
-              },
-              items: [
-                DropdownMenuItem(value: 'employee', child: Text('Employee')),
-                DropdownMenuItem(value: 'customer', child: Text('Customer')),
-              ],
-              decoration: InputDecoration(labelText: 'Role'),
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () async {
-                if (_role != null) {
-                  await authService.registerWithEmailAndPassword(
-                    _emailController.text,
-                    _passwordController.text,
-                    _role!,
-                  );
-                } else {
-                  
-                }
-              },
-              child: Text('Register'),
-            ),
-          ],
+        child: Form(
+          key: _formKey,
+          child: Column(
+            children: [
+              TextFormField(
+                controller: _emailController,
+                decoration: InputDecoration(labelText: 'Email'),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter your email';
+                  }
+                  return null;
+                },
+              ),
+              TextFormField(
+                controller: _passwordController,
+                decoration: InputDecoration(labelText: 'Password'),
+                obscureText: true,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter your password';
+                  }
+                  return null;
+                },
+              ),
+              TextFormField(
+                controller: _confirmPasswordController,
+                decoration: InputDecoration(labelText: 'Confirm Password'),
+                obscureText: true,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please confirm your password';
+                  }
+                  if (value != _passwordController.text) {
+                    return 'Passwords do not match';
+                  }
+                  return null;
+                },
+              ),
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () async {
+                  if (_formKey.currentState!.validate()) {
+                    await authService.registerWithEmailAndPassword(
+                      _emailController.text,
+                      _passwordController.text,
+                      'customer', // Automatycznie przypisz rolę "customer"
+                    );
+                    Navigator.pop(context); // Powrót do ekranu logowania po rejestracji
+                  }
+                },
+                child: Text('Register'),
+              ),
+            ],
+          ),
         ),
       ),
     );

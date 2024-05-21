@@ -20,7 +20,6 @@ class AuthService {
       UserCredential result = await _auth.createUserWithEmailAndPassword(email: email, password: password);
       User? user = result.user;
 
-      // Dodaj rolę użytkownika do Firestore
       await _firestore.collection('users').doc(user?.uid).set({
         'email': email,
         'role': role,
@@ -49,15 +48,9 @@ class AuthService {
   Future<String?> getUserRole(User user) async {
     try {
       DocumentSnapshot snapshot = await _firestore.collection('users').doc(user.uid).get();
-      if (snapshot.exists) {
-        print('User role: ${snapshot['role']}');
-        return snapshot['role'];
-      } else {
-        print('User document does not exist');
-        return null;
-      }
+      return snapshot['role'];
     } catch (e) {
-      print('Error fetching user role: $e');
+      print(e.toString());
       return null;
     }
   }

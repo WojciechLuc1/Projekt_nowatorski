@@ -43,12 +43,12 @@ class EmployeeScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => ItemListScreen()),
+                  MaterialPageRoute(builder: (context) => ItemListScreen(isEmployee: true)),
                 );
               },
-              child: Text('View Items'),
+              child: Text('Manage Items'),
             ),
-            // Dodaj inne przyciski funkcjonalności tutaj
+            // Możesz dodać inne przyciski funkcjonalności tutaj
           ],
         ),
       ),
