@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:intl/intl.dart';
-import 'item_info_screen.dart'; // Dodaj ten import
+import 'item_info_screen.dart';
 import 'borrow_item_screen.dart';
 
 class ItemListScreen extends StatelessWidget {
@@ -27,7 +27,8 @@ class ItemListScreen extends StatelessWidget {
 
           final items = snapshot.data!.docs.where((item) {
             // Filtrowanie przedmiotów wypożyczonych przez zalogowanego użytkownika
-            if (!isEmployee && item['borrowedBy'] == user?.uid) {
+            final data = item.data() as Map<String, dynamic>?;
+            if (!isEmployee && data != null && data.containsKey('borrowedBy') && item['borrowedBy'] == user?.uid) {
               return false;
             }
             return true;
@@ -38,17 +39,20 @@ class ItemListScreen extends StatelessWidget {
             itemBuilder: (context, index) {
               final item = items[index];
               final isBorrowed = item['isBorrowed'] ?? false;
-              final borrowedBy = item['borrowedBy'];
               final data = item.data() as Map<String, dynamic>?;
+              final borrowedBy = data != null && data.containsKey('borrowedBy') ? item['borrowedBy'] : null;
               final borrowPeriodEnd = data != null && data.containsKey('borrowPeriodEnd') && item['borrowPeriodEnd'] != null 
                   ? (item['borrowPeriodEnd'] as Timestamp).toDate()
                   : null;
               final availableFrom = borrowPeriodEnd != null
                   ? DateFormat('yyyy-MM-dd').format(borrowPeriodEnd.add(Duration(days: 1)))
                   : 'Unavailable';
+              final dailyRentalPrice = item['dailyRentalPrice'] != null
+                  ? item['dailyRentalPrice'].toString()
+                  : 'N/A';
 
               return ListTile(
-                title: Text(item['name']),
+                title: Text('${item['name']} - $dailyRentalPrice zł/day'),
                 subtitle: Text(item['description']),
                 trailing: isEmployee
                     ? ElevatedButton(

@@ -7,14 +7,27 @@ class AddItemScreen extends StatefulWidget {
 }
 
 class _AddItemScreenState extends State<AddItemScreen> {
+  final _formKey = GlobalKey<FormState>();
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _descriptionController = TextEditingController();
-  final _formKey = GlobalKey<FormState>();
+  final TextEditingController _priceController = TextEditingController();
+
+  Future<void> _addItem() async {
+    await FirebaseFirestore.instance.collection('items').add({
+      'name': _nameController.text,
+      'description': _descriptionController.text,
+      'dailyRentalPrice': double.parse(_priceController.text),
+      'isBorrowed': false,
+    });
+    Navigator.pop(context);
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Add Item')),
+      appBar: AppBar(
+        title: Text('Add Item'),
+      ),
       body: Padding(
         padding: EdgeInsets.all(16.0),
         child: Form(
@@ -41,18 +54,22 @@ class _AddItemScreenState extends State<AddItemScreen> {
                   return null;
                 },
               ),
+              TextFormField(
+                controller: _priceController,
+                decoration: InputDecoration(labelText: 'Daily Rental Price'),
+                keyboardType: TextInputType.number,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter the daily rental price';
+                  }
+                  return null;
+                },
+              ),
               SizedBox(height: 20),
               ElevatedButton(
-                onPressed: () async {
+                onPressed: () {
                   if (_formKey.currentState!.validate()) {
-                    await FirebaseFirestore.instance.collection('items').add({
-                      'name': _nameController.text,
-                      'description': _descriptionController.text,
-                      'available': true,
-                      'isBorrowed': false,
-                      'borrowedBy': null,
-                    });
-                    Navigator.pop(context);
+                    _addItem();
                   }
                 },
                 child: Text('Add Item'),

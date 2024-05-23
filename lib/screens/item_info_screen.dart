@@ -25,6 +25,10 @@ class ItemInfoScreen extends StatelessWidget {
     final borrowPeriodEnd = data != null && data.containsKey('borrowPeriodEnd') && item['borrowPeriodEnd'] != null 
         ? (item['borrowPeriodEnd'] as Timestamp).toDate() 
         : null;
+    final dailyRentalPrice = item['dailyRentalPrice'] != null
+        ? item['dailyRentalPrice'].toString()
+        : 'N/A';
+    final orderId = data != null && data.containsKey('orderId') ? item['orderId'] : 'N/A';
 
     return Scaffold(
       appBar: AppBar(
@@ -46,6 +50,11 @@ class ItemInfoScreen extends StatelessWidget {
             ),
             SizedBox(height: 10),
             Text(
+              'Daily Rental Price: ${dailyRentalPrice} zł',
+              style: TextStyle(fontSize: 16),
+            ),
+            SizedBox(height: 10),
+            Text(
               'Status: ${isBorrowed ? 'Borrowed' : 'Available'}',
               style: TextStyle(fontSize: 16),
             ),
@@ -59,6 +68,11 @@ class ItemInfoScreen extends StatelessWidget {
               Text(
                 'Borrow Period: ${borrowPeriodStart != null ? DateFormat('yyyy-MM-dd').format(borrowPeriodStart) : ''} to ${borrowPeriodEnd != null ? DateFormat('yyyy-MM-dd').format(borrowPeriodEnd) : ''}',
                 style: TextStyle(fontSize: 16),
+              ),
+              SizedBox(height: 10),
+              Text(
+                'Order ID: $orderId',
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
             ],
             Spacer(),

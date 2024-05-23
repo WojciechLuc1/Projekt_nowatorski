@@ -4,6 +4,7 @@ import '../services/auth_service.dart';
 import 'add_item_screen.dart';
 import 'item_list_screen.dart';
 import 'auth/login_screen.dart';
+import 'order_screen.dart';
 
 class EmployeeScreen extends StatelessWidget {
   @override
@@ -49,6 +50,17 @@ class EmployeeScreen extends StatelessWidget {
               child: Text('Manage Items'),
             ),
             // Możesz dodać inne przyciski funkcjonalności tutaj
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => OrderScreen(), // Dodaj ten przycisk
+                  ),
+                );
+              },
+              child: Text('Zamówienia'),
+            ),
           ],
         ),
       ),
